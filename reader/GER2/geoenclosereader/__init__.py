@@ -4,4 +4,4 @@ Reads a binary-tree cover ledger (TSV, units 2^-20 for boxes, 2^-36 for values),
 structure, and re-encloses selected terminal leaves with its own Arb kernels (not the producer's).
 DIAGNOSTIC_ONLY / NOT_EVIDENCE.
 """
-__version__ = "0.5.1"
+__version__ = "0.6.0"

@@ -37,9 +37,11 @@ GeoEnclosure は区間演算、適応的細分化、平均値形式、区間 New
 
 | 場所 | 内容 | 状態 |
 |---|---|---|
+| [`note/`](note/) | **研究ノート v1.0（日本語）**：方法の定義、三つの操作、四つの原則、初等的な例、回転楕円体の 186 箱での比較、限界、主張と根拠の対応表。§6 の数を出し直す検査スクリプト 2 本 | 著者確認済み（2026-11-21、G01〜G18）。査読前 |
 | [`standard/`](standard/) | GeoEnclosure 基準 v1.1（日本語が正本）、英訳、やさしい解説、採用の判定書、v1.0 | 2026-11-20 採用。原本とバイト単位で同じ（[`PROVENANCE.md`](standard/PROVENANCE.md)） |
-| [`reader/`](reader/) | GeoEncloseReader 0.5.1（監査の道具）。区間の核、自己試験、参照の数値実装 | 研究用ソフトウェア。出力は DIAGNOSTIC_ONLY |
+| [`reader/`](reader/) | GeoEncloseReader 0.6.0（監査の道具）。区間の核、自己試験、参照の数値実装 | 研究用ソフトウェア。出力は DIAGNOSTIC_ONLY |
 | [`reader/GER2/examples/`](reader/GER2/examples/) | **学生向けの例題集**。標準ライブラリだけで動く | 自己試験 `FAILURES 0`（Python 3.11、3.13） |
+| [`origin/`](origin/) | **着想の原本**：コラム A025「閉じた夜」（DAYBREAK、2026-11-19）。方法が生まれた経緯 | 公開版の本文の写し（原本：[note](https://note.com/open_cobra5758/n/n1208d294e040)） |
 
 ### まず動かす（例題）
 
@@ -51,10 +53,9 @@ python ex3_root_by_bisection.py     # 根の存在・一意性・位置を分け
 python selftest_examples.py         # FAILURES 0
 ```
 
-### まだ入れていないもの
+### まだ決めていないもの
 
-- **日本語の方法論の研究ノート：** 草稿。著者の最終確認が済んでから登録する。
-- **ライセンス：** 未定。案は、文書が CC BY 4.0、コードが MIT。決まるまでは、引用と閲覧のための公開とする。
+- **ライセンス：** 案は、文書が CC BY 4.0、コードが MIT。決まるまでは、引用と閲覧のための公開とする。
 
 ## 関連研究
 
@@ -66,4 +67,4 @@ python selftest_examples.py         # FAILURES 0
 
 ## AI の利用
 
-基準の本文と GeoEncloseReader のコードは、著者の指示のもとで AI（Claude、Anthropic）が起草した。v1.0 は Claude Code が査読した。方法の命名、採用の判断、内容の責任は著者（古田 勝士、DAYBREAK）にある。
+方法の着想は、著者と Claude との対話から生まれた。基準の本文と GeoEncloseReader のコードは、著者の指示のもとで AI（Claude、Anthropic）が起草した。v1.0 は Claude Code が査読した。方法の命名、採用の判断、内容の責任は著者（古田 勝士、DAYBREAK）にある。

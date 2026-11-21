@@ -1,4 +1,4 @@
-# GeoEncloseReader 0.5.1
+# GeoEncloseReader 0.6.0
 
 GeoEncloseReader is the audit tool of the GeoEnclosure method. It re-encloses interval-arithmetic covers with its own kernels, independent of the producer's, and checks the claimed signs.
 
@@ -26,7 +26,7 @@ The package is `GER2/geoenclosereader/`:
 |---|---|---|
 | `tri.py`, `tri2.py` | 0.3.0 | triaxial centre, pole and disk kernels |
 | `tri3.py` | 0.4.0 | general-point kernels, first order in the parameters |
-| `tri4.py`, `jet.py` | 0.5.0 | general-point kernels, second order in the parameters |
+| `tri4.py`, `jet.py` | 0.5.0, 0.6.0 | general-point kernels, second order in the parameters (`lazy` option in 0.6.0) |
 | `fiv.py`, `dual.py` | — | binary64 outward-rounded intervals and interval duals |
 | `kernels.py`, `verify.py`, `ledger.py` | 0.1–0.2 | Arb kernels and the ledger reader for the rotational family |
 
@@ -34,7 +34,7 @@ Other files:
 - `GER2/selftest_tri*.py`: self-tests of the kernels.
 - `v57/`: the non-interval reference quadrature (Gauss–Legendre) that these self-tests compare against.
 
-Version 0.5.1 adds only `examples/`. The kernels are byte-identical to 0.5.0, the version used for the V60 calibration.
+Version 0.6.0 adds `tri4.enclose(..., lazy=True)`: the first-order form is computed first, and the second-order form is added only when the first-order enclosure contains 0. The tree of boxes is the same as with 0.5.0, and the run is about 1.4 times faster (V61). `selftest_lazy.py` checks this. Version 0.5.1 added `examples/`.
 
 ## Requirements
 
@@ -52,6 +52,7 @@ python -I selftest_tri.py
 python -I selftest_tri2.py
 python -I selftest_tri3.py
 python -I selftest_tri4.py
+python -I selftest_lazy.py
 ```
 
 Each one ends with `FAILURES 0`.

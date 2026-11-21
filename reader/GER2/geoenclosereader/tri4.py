@@ -1,4 +1,4 @@
-"""General-point triaxial enclosures, second order in the parameters (GeoEncloseReader 0.5.0, V60, chat).
+"""General-point triaxial enclosures, second order in the parameters (GeoEncloseReader 0.5.0, V60, chat; lazy option 0.6.0, V61).
 Same integrands and chart as tri3 (0.4.0): E3, T12, H33 on the full sphere, weight sin th / (4 pi), p = (s, t, q1, q2, q3).
 
 Second-order path (no contact cell on the fine grid, D^2 > 0 on every coarse cell x box):
@@ -83,8 +83,11 @@ def _mv_cells(vc, gd, G):
     return cell
 
 
-def enclose(kind, box, N=32, grade=0, NH=None):
-    """box: 5 pairs of Fractions (s, t, q1, q2, q3). Encloses the sphere mean of `kind` over box ∩ ball."""
+def enclose(kind, box, N=32, grade=0, NH=None, lazy=False):
+    """box: 5 pairs of Fractions (s, t, q1, q2, q3). Encloses the sphere mean of `kind` over box ∩ ball.
+    lazy (0.6.0): compute the first-order form first; add the second-order form only when the first-order
+    enclosure contains 0. A sign decision is then the same as with lazy=False (the intersection decides a sign iff
+    one of the two does), and when the second-order form is computed everything is as with lazy=False."""
     NH = NH if NH is not None else max(16, N//2)
     G = _grid(N, grade, box); shp = G["C1"].lo.shape
     lo = [Fraction(a) for a, b in box]; hi = [Fraction(b) for a, b in box]
@@ -116,7 +119,23 @@ def enclose(kind, box, N=32, grade=0, NH=None):
     A = (I.where(safe, cellA, z) if ncontact else cellA).fsum()
     angular_width = float(A.hi - A.lo); info = {}
     out1, terms1, out2, terms2, aw2 = A, {}, None, {}, angular_width
-    if act and order == 2:
+    if act:
+        n = len(act); one = I(np.ones(shp))
+        if ncontact:
+            fp_f = tri3._make(kind, safe_mask=safe)
+        else:
+            fp_f = f
+        pars = [D(I(np.full(shp, full[j].lo), np.full(shp, full[j].hi)), [one if j == act[i] else z for i in range(n)]) if j in act
+                else D.const(I(np.full(shp, full[j].lo), np.full(shp, full[j].hi)), n) for j in range(5)]
+        fp = fp_f(D.const(G["S1"], n), D.const(G["C1"], n), D.const(G["S2"], n), D.const(G["C2"], n), *pars)
+        for i, j in enumerate(act):
+            gsum = (I.where(safe, fp.g[i]*m0, z) if ncontact else fp.g[i]*m0).fsum()
+            tw = gsum*dl[j]; out1 = out1 + tw; terms1[j] = float(tw.hi - tw.lo)
+    if ncontact:
+        fb = (_fallback(kind, full[0], full[1], shp)*m0)
+        out1 = out1 + I.where(safe, z, fb).fsum()
+    decided1 = bool(out1.lo > 0 or out1.hi < 0)
+    if act and order == 2 and not (lazy and decided1):
         n = len(act)
         # (B1) d_j f at cell centres, p = p0
         one = I(np.ones(shp))
@@ -157,21 +176,6 @@ def enclose(kind, box, N=32, grade=0, NH=None):
             if i != k: terms2[j2] = terms2.get(j2, 0.0) + 0.5*w
         info = dict(B={j: (float(Bj[j].lo), float(Bj[j].hi)) for j in act}, C={str((act[i], act[k])): (float(C[(i, k)].lo), float(C[(i, k)].hi)) for (i, k) in prC})
         out2 = A + out2
-    if act:
-        n = len(act); one = I(np.ones(shp))
-        if ncontact:
-            fp_f = tri3._make(kind, safe_mask=safe)
-        else:
-            fp_f = f
-        pars = [D(I(np.full(shp, full[j].lo), np.full(shp, full[j].hi)), [one if j == act[i] else z for i in range(n)]) if j in act
-                else D.const(I(np.full(shp, full[j].lo), np.full(shp, full[j].hi)), n) for j in range(5)]
-        fp = fp_f(D.const(G["S1"], n), D.const(G["C1"], n), D.const(G["S2"], n), D.const(G["C2"], n), *pars)
-        for i, j in enumerate(act):
-            gsum = (I.where(safe, fp.g[i]*m0, z) if ncontact else fp.g[i]*m0).fsum()
-            tw = gsum*dl[j]; out1 = out1 + tw; terms1[j] = float(tw.hi - tw.lo)
-    if ncontact:
-        fb = (_fallback(kind, full[0], full[1], shp)*m0)
-        out1 = out1 + I.where(safe, z, fb).fsum()
     # both are valid enclosures of the same mean: keep the intersection (an empty one would be an INCONSISTENT kernel)
     if out2 is None:
         out, terms, used = out1, terms1, 1
@@ -183,18 +187,18 @@ def enclose(kind, box, N=32, grade=0, NH=None):
         if w2 <= w1: terms, used, angular_width = terms2, 2, aw2
         else: terms, used = terms1, 1
         info["width1"], info["width2"] = w1, w2
-    enclose.last = {"order": order, "used": used, "contact_cells": ncontact, "terms": terms, "angular_width": angular_width,
+    enclose.last = {"order": order, "used": used, "lazy_skip": bool(lazy and out2 is None and order == 2 and bool(act)), "contact_cells": ncontact, "terms": terms, "angular_width": angular_width,
                     "total_width": float(out.hi - out.lo), "p0": [str(x) for x in p0], **info}
     return out
 
 
-def W3(box, N=32, grade=0, NH=None):
-    q3 = box[4]; return enclose("E3", box, N, grade, NH)/iv_frac(q3[0], q3[1])
+def W3(box, N=32, grade=0, NH=None, lazy=False):
+    q3 = box[4]; return enclose("E3", box, N, grade, NH, lazy)/iv_frac(q3[0], q3[1])
 
 
-def C12(box, N=32, grade=0, NH=None):
-    return enclose("T12", box, N, grade, NH)/(iv_frac(box[2][0], box[2][1])*iv_frac(box[3][0], box[3][1]))
+def C12(box, N=32, grade=0, NH=None, lazy=False):
+    return enclose("T12", box, N, grade, NH, lazy)/(iv_frac(box[2][0], box[2][1])*iv_frac(box[3][0], box[3][1]))
 
 
-def H33(box, N=32, grade=0, NH=None):
-    return enclose("H33", box, N, grade, NH)
+def H33(box, N=32, grade=0, NH=None, lazy=False):
+    return enclose("H33", box, N, grade, NH, lazy)
