@@ -1,0 +1,15 @@
+The documents in this repository (the Markdown files under standard/, note/
+and origin/) are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0).
+
+Copyright (c) 2026 Katsushi Furuta (DAYBREAK)
+
+Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+Summary:   https://creativecommons.org/licenses/by/4.0/
+
+Cite as:
+Furuta, K. (2026). GeoEnclosure: A Methodology of Interval Enclosure and Sign
+Determination Based on Problem Structure (Version 1.0). Zenodo.
+https://doi.org/10.5281/zenodo.24421364
+
+The code (reader/ and note/*.py) is licensed under the MIT License; see LICENSE.

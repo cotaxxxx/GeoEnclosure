@@ -3,6 +3,12 @@
 **Decide What to Measure. Enclose Values. Read Signs.**  
 **何を測るか決める。値を包む。符号を読む。**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24421364.svg)](https://doi.org/10.5281/zenodo.24421364)
+
+**Zenodo：** 研究ノート v1.0（日本語が正本、英訳）、基準 v1.1、GeoEncloseReader 0.6.0 を一つの登録として公開（2026-11-22）。DOI [10.5281/zenodo.24421364](https://doi.org/10.5281/zenodo.24421364)。引用はこの DOI でお願いします。
+
+> Furuta, K. (2026). *GeoEnclosure: A Methodology of Interval Enclosure and Sign Determination Based on Problem Structure* (Version 1.0). Zenodo. https://doi.org/10.5281/zenodo.24421364
+
 GeoEnclosure は、問題の**構造**を先に調べ、適切な数式の表示を選び、**保証付き区間包囲**と**符号判定**によって不要な探索領域を除外する研究方法論の名称です。
 
 > **基本方針：計算を増やす前に、計算を減らす方法を考える。**
@@ -53,9 +59,11 @@ python ex3_root_by_bisection.py     # 根の存在・一意性・位置を分け
 python selftest_examples.py         # FAILURES 0
 ```
 
-### まだ決めていないもの
+### ライセンス
 
-- **ライセンス：** 案は、文書が CC BY 4.0、コードが MIT。決まるまでは、引用と閲覧のための公開とする。
+- **文書**（`standard/`、`note/`、`origin/` の Markdown）：CC BY 4.0（[`LICENSE-docs`](LICENSE-docs)）
+- **コード**（`reader/`、`note/*.py`）：MIT（[`LICENSE`](LICENSE)）
+- Zenodo の登録と同じ（著者の判断、2026-11-22）。`origin/` のコラムは公開版の写しで、原本は note にある。
 
 ## 関連研究
 
