@@ -1,9 +1,9 @@
 # GeoEnclosure
 
-**Measure Angles. Enclose Values. Read Signs.**  
-**角度を測る。値を包む。符号を読む。**
+**Decide What to Measure. Enclose Values. Read Signs.**  
+**何を測るか決める。値を包む。符号を読む。**
 
-GeoEnclosure は、問題の**幾何学的な構造**を先に調べ、適切な数式の表示を選び、**保証付き区間包囲**と**符号判定**によって不要な探索領域を除外する研究方法論の名称です。
+GeoEnclosure は、問題の**構造**を先に調べ、適切な数式の表示を選び、**保証付き区間包囲**と**符号判定**によって不要な探索領域を除外する研究方法論の名称です。
 
 > **基本方針：計算を増やす前に、計算を減らす方法を考える。**
 
@@ -19,7 +19,7 @@ GeoEnclosure は、問題の**幾何学的な構造**を先に調べ、適切な
 
 | 操作 | 意味 |
 | --- | --- |
-| **Measure** | 対象の対称性・幾何学的構造や有効な方向を調べる |
+| **Measure** | 結論に必要な量を決める。対称性・共通項・有効な方向から、どの量の符号が分かれば何が言えるかを選ぶ |
 | **Enclose** | 値域を誤差込みの保証付き区間に包む |
 | **Read** | 区間の符号から除外・保留・次の検証を判断する |
 
@@ -33,19 +33,37 @@ GeoEnclosure は区間演算、適応的細分化、平均値形式、区間 New
 
 実際の厳密性は、各問題の定義、包囲演算の丸め保証、積分・級数の誤差界、被覆、境界の扱い、検証記録によって決まります。SHA-256 の一致だけで数学的な正しさは証明されません。
 
-## 初期状態
+## 収録物
 
-このリポジトリは**GeoEnclosure 方法論の独立した保管・公開場所**です。作成時点ではREADMEを初期登録しています。数学論文やソフトウェアの完全な証明書が登録されたことを意味しません。
+| 場所 | 内容 | 状態 |
+|---|---|---|
+| [`standard/`](standard/) | GeoEnclosure 基準 v1.1（日本語が正本）、英訳、やさしい解説、採用の判定書、v1.0 | 2026-11-20 採用。原本とバイト単位で同じ（[`PROVENANCE.md`](standard/PROVENANCE.md)） |
+| [`reader/`](reader/) | GeoEncloseReader 0.5.1（監査の道具）。区間の核、自己試験、参照の数値実装 | 研究用ソフトウェア。出力は DIAGNOSTIC_ONLY |
+| [`reader/GER2/examples/`](reader/GER2/examples/) | **学生向けの例題集**。標準ライブラリだけで動く | 自己試験 `FAILURES 0`（Python 3.11、3.13） |
 
-- 日本語の方法論論文（草稿）：整備対象
-- GeoEnclosure 基準・入門文書：既存原本の出典と版を確認してから登録
-- GeoEncloseReader：方法論とは区別し、実装の版・README・再現条件を明記して管理
-- 適用例・比較実験：出典、実験条件、未判定領域を含めて追加
+### まず動かす（例題）
+
+```bash
+cd reader/GER2/examples
+python ex1_gradient_difference.py   # 勾配の差：箱を使わずに停留点がないことを示す
+python ex2_three_enclosures.py      # 三つの包みと、目標による違い
+python ex3_root_by_bisection.py     # 根の存在・一意性・位置を分けて示す
+python selftest_examples.py         # FAILURES 0
+```
+
+### まだ入れていないもの
+
+- **日本語の方法論の研究ノート：** 草稿。著者の最終確認が済んでから登録する。
+- **ライセンス：** 未定。案は、文書が CC BY 4.0、コードが MIT。決まるまでは、引用と閲覧のための公開とする。
 
 ## 関連研究
 
 - [回転楕円体族の研究](https://github.com/cotaxxxx/bg-spheroid-family)
 - [三軸楕円体族の研究](https://github.com/cotaxxxx/bg-triaxial-family)
-- [GeoEnclosure 基準 v1.1（既存の三軸研究リポジトリにある原本コピー）](https://github.com/cotaxxxx/bg-triaxial-family/blob/main/evidence/chat-originals/2026-11-20/GEOENCLOSURE_STANDARD/GEOENCLOSURE_STANDARD_v1.1.md)
+- 基準の原本の保管場所：`cotaxxxx/bg-triaxial-family` の `evidence/chat-originals/2026-11-20/GEOENCLOSURE_STANDARD/`（commit `67eb2af`）
 
 回転楕円体・三軸楕円体の**数学的な採否**は、各研究リポジトリと当該証拠・裁定を参照してください。特に三軸楕円体の主矩形内陸の全域分類は未完了です。
+
+## AI の利用
+
+基準の本文と GeoEncloseReader のコードは、著者の指示のもとで AI（Claude、Anthropic）が起草した。v1.0 は Claude Code が査読した。方法の命名、採用の判断、内容の責任は著者（古田 勝士、DAYBREAK）にある。
