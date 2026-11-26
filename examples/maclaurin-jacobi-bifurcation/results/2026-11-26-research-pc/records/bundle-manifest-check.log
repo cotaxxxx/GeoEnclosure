@@ -1,0 +1,13 @@
+DERIVATION.md: OK
+MANIFEST.json: OK
+PLAN.md: OK
+PLAN_INPUTS.json: OK
+README.md: OK
+SMOKE_CHECKS.txt: OK
+build.sh: OK
+rational_series.py: OK
+run_case.py: OK
+smoke_checks.py: OK
+src/header_probe.c: OK
+src/macl_jacobi.c: OK
+verify_certificate.py: OK

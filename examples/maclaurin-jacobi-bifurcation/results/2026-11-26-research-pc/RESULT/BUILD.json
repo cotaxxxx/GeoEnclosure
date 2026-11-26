@@ -1,0 +1,32 @@
+{
+  "mpfr": "4.2.2",
+  "gmp": "6.3.0",
+  "gmp_limb_bits": 64,
+  "compiler": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "switches": [
+    "-O2",
+    "-std=c11",
+    "-D_POSIX_C_SOURCE=200809L",
+    "-Wall",
+    "-Wextra",
+    "-Werror=implicit-function-declaration",
+    "-Werror=incompatible-pointer-types",
+    "-Werror=int-conversion",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-include",
+    "mpfr.h",
+    "-fPIC",
+    "-shared",
+    "-lmpfr",
+    "-lgmp"
+  ],
+  "library_sha256": "df927dd268503e5b3c64652f030da606cf48b9c4643d95244286e406a86c18ac",
+  "bundle_manifest_sha256": "f09307be0affcde82aa2381efb2f7acc4cb70924fd05d2b20e7fb7a0601dbc92",
+  "k1_sha256": "367570732a5927dbd73d309b953178ea5b4e316288c70fd910e9ad469eb15523",
+  "compile_log_sha256": "281e9eb70800a23316f1123075a1bd6653484808a52878b4d97956ce6fc17d96",
+  "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+  "cpu": "AMD Ryzen 9 9900X 12-Core Processor",
+  "logical_cpus": 24,
+  "python": "3.14.4"
+}

@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "state": "DIAGNOSTIC_ONLY",
+  "central": ["1/8", "63/64"],
+  "small_e_bounds": ["-4/15", "-1/4"],
+  "small_q_bounds": ["1/4", "3/2"],
+  "target_width": "1/4503599627370496",
+  "max_steps": 160,
+  "precisions": [128, 256, 512],
+  "fixed_grid_bits": 192,
+  "series_terms": 2048,
+  "display_digits": 16,
+  "research_pc_not_before": "2026-11-26T18:14:00+09:00"
+}

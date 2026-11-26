@@ -1,0 +1,15 @@
+DERIVATION.md BYTE MATCH
+MANIFEST.json BYTE MATCH
+PLAN.md BYTE MATCH
+PLAN_INPUTS.json BYTE MATCH
+README.md BYTE MATCH
+SHA256SUMS.txt BYTE MATCH
+SMOKE_CHECKS.txt BYTE MATCH
+build.sh BYTE MATCH
+rational_series.py BYTE MATCH
+run_case.py BYTE MATCH
+smoke_checks.py BYTE MATCH
+src/header_probe.c BYTE MATCH
+src/macl_jacobi.c BYTE MATCH
+verify_certificate.py BYTE MATCH
+14/14 PASS

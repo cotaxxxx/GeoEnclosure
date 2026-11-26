@@ -1,0 +1,88 @@
+{
+  "grade": "DIAGNOSTIC_ONLY",
+  "bundle_commit": "4e52466bfd7be83c9af44f0add7907dee4cc36de",
+  "execution_approval": "6c34e7df50a13f5a21e72c19d556fcb1a4f7ef18",
+  "started_utc": "2026-11-26T09:15:40.025277+00:00",
+  "candidate_b_v2_ended_at": "2026-11-26T16:19:14+09:00",
+  "candidate_b_v2_end_record": "/home/daybreak/candidate-b-v2-pc-20261126/records/run-end.json",
+  "cmd": [
+    "run_case.py",
+    "--bundle-commit",
+    "4e52466bfd7be83c9af44f0add7907dee4cc36de",
+    "--judge-execution",
+    "6c34e7df50a13f5a21e72c19d556fcb1a4f7ef18",
+    "--candidate-b-v2-ended-at",
+    "2026-11-26T16:19:14+09:00",
+    "--candidate-b-v2-end-record",
+    "/home/daybreak/candidate-b-v2-pc-20261126/records/run-end.json",
+    "/home/daybreak/maclaurin-jacobi-pc-20261126/RESULT"
+  ],
+  "bundle": {
+    "schema": 1,
+    "grade": "DIAGNOSTIC_ONLY",
+    "case": "Maclaurin-Jacobi bifurcation",
+    "date_jst": "2026-11-26",
+    "bundle_state": "PREREGISTERED_NOT_EXECUTED",
+    "packaged_root": "MACLAURIN_JACOBI_PC_BUNDLE",
+    "git_repository": "cotaxxxx/GeoEnclosure",
+    "git_path": "examples/maclaurin-jacobi-bifurcation",
+    "git_base": "1f849135fd1b3a58b27dba1976b3cdd361c5504d",
+    "build_protocol_source": {
+      "repository": "cotaxxxx/bg-triaxial-family",
+      "commit": "bb50c85c1bff93e3e04b54c5cbd218dcb3768a96",
+      "scope": "K1 package and header check, compiler flags and header probe"
+    },
+    "research_pc_not_before": "2026-11-26T18:14:00+09:00",
+    "execution_conditions": [
+      "chat audit",
+      "separate Judge approval",
+      "Candidate B v2 ended"
+    ],
+    "files": {
+      "DERIVATION.md": "474bfe0cf599d42f42012e60425470d4d067bdfa6c94550f63a8fff97bcc01ea",
+      "PLAN.md": "90b0810236fce68816116077610797479068ae6695e495974a01112e796c2a50",
+      "PLAN_INPUTS.json": "82b6257f6843b02ba8d590b8559fcea9e195d0cf8561aebf83b60e780870cfc6",
+      "README.md": "1263d601ca2fa82d2f8877444b4dfeadc83c37d42939f3e41761ef16105ebdb1",
+      "SMOKE_CHECKS.txt": "76e1d12993750ab8c92ee9ee7169bfc0aded6afe20390c7f175d3cfef6995dc5",
+      "build.sh": "6576486395ecd74c28badb710759a13616d1b2113684142aeb95bb12626e6b73",
+      "rational_series.py": "d61420f5610771ff4f96a7980a344b72a5138135f23175e18531658aef144b4e",
+      "run_case.py": "564421cc939ce2605c401cdf7145c457aa606c28e1a9adc1a1e5442dccb0150a",
+      "smoke_checks.py": "6847d05a1aa13266d969946b93ae0ec39d7e3eb67358e20daf933b42d0636f9b",
+      "src/header_probe.c": "ad241332c27cf8a862c34ca0f1d7af842b6575db4a21d94fb5279d0919d31e34",
+      "src/macl_jacobi.c": "84b92d40864664da3194da990c52fb953b0d769385b0701cc1c76ecbe323ea34",
+      "verify_certificate.py": "5bf82179c76e569c073d51cd281a2b9cd28b9df51a9a8caf3143d65894e80da3"
+    }
+  },
+  "build": {
+    "mpfr": "4.2.2",
+    "gmp": "6.3.0",
+    "gmp_limb_bits": 64,
+    "compiler": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+    "switches": [
+      "-O2",
+      "-std=c11",
+      "-D_POSIX_C_SOURCE=200809L",
+      "-Wall",
+      "-Wextra",
+      "-Werror=implicit-function-declaration",
+      "-Werror=incompatible-pointer-types",
+      "-Werror=int-conversion",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-include",
+      "mpfr.h",
+      "-fPIC",
+      "-shared",
+      "-lmpfr",
+      "-lgmp"
+    ],
+    "library_sha256": "df927dd268503e5b3c64652f030da606cf48b9c4643d95244286e406a86c18ac",
+    "bundle_manifest_sha256": "f09307be0affcde82aa2381efb2f7acc4cb70924fd05d2b20e7fb7a0601dbc92",
+    "k1_sha256": "367570732a5927dbd73d309b953178ea5b4e316288c70fd910e9ad469eb15523",
+    "compile_log_sha256": "281e9eb70800a23316f1123075a1bd6653484808a52878b4d97956ce6fc17d96",
+    "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "cpu": "AMD Ryzen 9 9900X 12-Core Processor",
+    "logical_cpus": 24,
+    "python": "3.14.4"
+  }
+}
