@@ -1,0 +1,21 @@
+2026-11-26 JST | DIAGNOSTIC_ONLY | artificial inputs only
+
+Compiler: cc (Debian 14.2.0-19) 14.2.0
+Header/link probe: {"mpfr":"4.2.2","gmp":"6.3.0","gmp_limb_bits":64}
+The MPFR development header was taken from the upstream MPFR 4.2.2 release.
+Release archive SHA-256: b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01
+The local check used the upstream header and the installed matching shared
+libraries with the bundle compiler flags and temporary include/link paths.
+The research PC build uses the K1 package check in build.sh.
+
+bash -n build.sh and Python AST parsing completed.
+Exact rational arithmetic checked the two endpoint sign constants and the
+16-place outward display-width inequality in the plan.
+
+python3 -B smoke_checks.py --library /tmp/macl-jacobi-mpfr/libmacl_jacobi.so
+Artificial ledger: 52 steps and 107 boxes, quarter-point replay and tamper detection verified.
+Artificial integer-grid fixture: product, quotient and square-root inclusion verified.
+Artificial MPFR fixture: sqrt(2)/3 - 1/2 is enclosed by directed rounding.
+
+The physical F, F' and rotation-rate evaluations and the research PC run
+are pending chat audit and separate Judge execution approval.
