@@ -20,7 +20,7 @@
 
 **実例の条件（Judge 裁定 2026-11-26）**：GeoEnclosure の有効性を示すこと。素朴版と GeoEnclosure 版を同じ条件で両方実行して並べる。検算例 0 は正しさの確認で、Zenodo 短報としては保留。
 
-| 1 | [三軸楕円体の四本の零曲線](triaxial-four-curves/README.md)（有効性の実例：核不変で v1→v4） | 各版を実行前に固定（f70b83b・bb50c85・cdd885b・e7c039e） | **採用**（Judge 2d2576e）：四曲線 4/4・六組 6/6 | bg-triaxial-family の各束 |
+| 1 | [三軸楕円体の四本の零曲線](triaxial-four-curves/README.md)（有効性の実例：核不変で v1→v4） | 各版を実行前に固定（f70b83b・bb50c85・cdd885b・e7c039e） | **採用**（Judge 2d2576e）：四曲線 4/4・六組 6/6。論文 II として公開：doi:[10.5281/zenodo.24581453](https://doi.org/10.5281/zenodo.24581453) | bg-triaxial-family の各束 |
 | — | 制限3体問題のラグランジュ点 | **保留**（Judge 2026-11-26 19:45） | — | — |
 
 候補（未着手）：マクローリン列の目印、ヤコビ→洋梨形、楕円への法線の本数、ラグランジュ点、3軸楕円体のへそ点。記録は experimental-mathematics-ai-collaboration `docs/GEOENCLOSURE_WORKED_EXAMPLE_CANDIDATES_20261126.md`（e812e00）。

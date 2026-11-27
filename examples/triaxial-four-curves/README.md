@@ -8,6 +8,12 @@
 
 ## 問題
 
+> **公開（2026-11-27）：** この実例は論文 II として Zenodo で公開した。
+> K. Furuta, *A Map of the Angle Energy on Triaxial Ellipsoids: Four Threshold Curves of Stationary Points, with Reproduction Code and an Interactive Viewer*, Version 1.0, doi:[10.5281/zenodo.24581453](https://doi.org/10.5281/zenodo.24581453)。
+> 論文（PDF）、再現用の一式（zip）、連動ビューア（一つの HTML）の 3 点が入っている。正本は論文で、このページはその §8 にあたる記録。
+>
+> **位置づけ（論文 §8 と同じ）：** GeoEnclosure は証明を見つけるための発見的な方法論で、どの命題を確かめればよいかは教えず、証明が閉じることの保証もない。保証があるのは、閉じたあとの結論だけである。この実例は一つの事例の記録で、一般的な有効性の主張ではない。厳密計算の他の方法との比較もしていない。
+
 角度エネルギー（[論文 I](https://doi.org/10.5281/zenodo.24495446)）を三軸楕円体 diag(1, y, z) に置く。形の範囲 R=[1/4,1]×[1,7] で、中心 Hessian の零曲線 Z₁, Z₂ と、極点トレースの零曲線 ∂₁, ∂₂ の配置を確定する。四つの量はどれも球面上の積分で、閉じた式はない。
 
 **結果（Judge 採用 [2d2576e](https://github.com/cotaxxxx/bg-triaxial-family/commit/2d2576ee43f07a3cb94df28d63051f52649e3c81)）**：四本はそれぞれ 1 本の弧。Z₁–Z₂ は端点 c_p のみ共有、∂₁–∂₂ は端点 b_p のみ共有、Z₁–∂₁・Z₂–∂₁・Z₂–∂₂ は交わらず、Z₁–∂₂ は内部でちょうど 1 点（y*∈[0.63813110, 0.63821937]、z*∈[2.29643023, 2.29674050]）で横断的に交わる。
